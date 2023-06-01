@@ -7,7 +7,7 @@ import java.io.File;
 
 @Service
 public class UserService {
-    private static final String XML_FILE_PATH = "C://Projects//Week7//UserAuth//users.xml";
+    private static final String XML_FILE_PATH = "./users.xml";
 
     /**
      * Authenticates a user by checking the local XML file for the provided username and password.

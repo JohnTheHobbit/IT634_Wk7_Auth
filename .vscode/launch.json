@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-UserAuthApplication<UserAuth>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.boyd.UserAuth.UserAuthApplication",
+            "projectName": "UserAuth",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
