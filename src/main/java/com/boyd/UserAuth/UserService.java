@@ -4,11 +4,14 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
+import java.net.URL;
+
+
 
 @Service
 public class UserService {
-    private static final String XML_FILE_PATH = "./users.xml";
-
+    private static final String xmlFileName = "users.xml";
+    URL url = getClass().getClassLoader().getResource(xmlFileName);
     /**
      * Authenticates a user by checking the local XML file for the provided username and password.
      *
@@ -53,7 +56,7 @@ public class UserService {
      * @throws Exception If an error occurs during XML file parsing or reading.
      */
     private UserList getUsersFromXml() throws Exception {
-        File xmlFile = new File(XML_FILE_PATH);
+        File xmlFile = new File(url.getPath());
         JAXBContext jaxbContext = JAXBContext.newInstance(UserList.class);
         Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
         return (UserList) jaxbUnmarshaller.unmarshal(xmlFile);
@@ -66,7 +69,7 @@ public class UserService {
      * @throws Exception If an error occurs during XML file parsing or writing.
      */
     private void saveUsersToXml(UserList userList) throws Exception {
-        File xmlFile = new File(XML_FILE_PATH);
+        File xmlFile = new File(url.getPath());
         JAXBContext jaxbContext = JAXBContext.newInstance(UserList.class);
         Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
         jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
